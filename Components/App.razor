@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Paraíso das Aves</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 230px;
+            background-color: #1e73be;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid #155a96;
+        }
+
+            .sidebar-header img {
+                height: 25px;
+                margin-right: 10px;
+            }
+
+        .menu {
+            flex: 1;
+        }
+
+            .menu a {
+                display: block;
+                padding: 12px 20px;
+                text-decoration: none;
+                color: white;
+                font-size: 14px;
+                border-bottom: 1px solid #2a7ccc;
+                transition: background 0.3s;
+            }
+
+                .menu a:hover {
+                    background-color: #143450;
+                }
+
+        .main {
+            background-image: url("Images./paraiso.jpeg");
+            background-size: cover;
+            background-position: center;
+        }
+        /* Main content */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .topbar {
+            background-color: #0c4a80;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo">
+            PARAÍSO DAS AVES
+        </div>
+        <div class="menu">
+            <a href="clientesCadastro.html">Gestão de Clientes</a>
+            <a href="CadastroPet.html">Gestão de Animais</a>
+            <a href="#">Gestão de Funcionário</a>
+            <a href="#">Gestão de Fornecedor</a>
+            <a href="#">Gestão Financeira</a>
+            <a href="#">Gestão de Venda</a>
+            <a href="#">Gestão de Compra</a>
+            <a href="#">Gestão de Serviço</a>
+            <a href="#">Gestão de Agendamento</a>
+            <a href="#">Gerenciamento de estoque</a>
+            <a href="#">Cadastrar Produtos</a>
+            <a href="#">Administração do Caixa</a>
+            <a href="#">Contas a receber</a>
+            <a href="#">Contas a pagar</a>
+        </div>
+    </div>
+    <!-- Main Content -->
+    <div class="main">
+    </div>
+
+    <script>
+        $(function () {
+          // Toggle sidebar
+          $("#toggleSidebar").click(function () {
+            $("#sidebar").toggleClass("w-64 w-20");
+            $(".sidebar-text").toggleClass("hidden");
+          });
+
+          // Toggle theme com animação de transição de cores
+          $("#toggleTheme").click(function () {
+            $("html").toggleClass("dark");
+          });
+
+          // Dropdown animado
+          $("#userMenuBtn").click(function () {
+            let $dropdown = $("#userDropdown");
+            if ($dropdown.is(":visible")) {
+              $dropdown.addClass("dropdown-leave").removeClass("dropdown-enter dropdown-enter-active");
+              setTimeout(() => $dropdown.addClass("hidden").removeClass("dropdown-leave dropdown-leave-active"), 150);
+              $dropdown.addClass("dropdown-leave-active");
+            } else {
+              $dropdown.removeClass("hidden").addClass("dropdown-enter");
+              setTimeout(() => $dropdown.addClass("dropdown-enter-active").removeClass("dropdown-enter"), 10);
+            }
+          });
+
+          // Fecha dropdown ao clicar fora
+          $(document).click(function (e) {
+            if (!$(e.target).closest("#userMenuBtn, #userDropdown").length) {
+              $("#userDropdown").addClass("hidden").removeClass("dropdown-enter dropdown-enter-active dropdown-leave dropdown-leave-active");
+            }
+          });
+        });
+    </script>
+</body>
+</html>
